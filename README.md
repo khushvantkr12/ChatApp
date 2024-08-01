@@ -71,7 +71,7 @@ Frontend
    cd socket
    npm start
    ```
-9 Open your web browser and visit http://localhost:3000 to access clone. 
+
 
 (If you liked the project, give it star 😃)
 </p>
