@@ -51,13 +51,6 @@ Frontend
    npm install
    ```
 
-5. Create a .env file inside the server folder and provide the following environment variables:
-
-   ```
-   DB_USERNAME=<your-db-username>
-   DB_PASSWORD=<your-db-password>
-   
-   ```
 
 6. Start the express server using :
 
