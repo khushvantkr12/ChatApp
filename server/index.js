@@ -12,6 +12,10 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", Route);
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 const PORT = 8000;
 
 Connection();
