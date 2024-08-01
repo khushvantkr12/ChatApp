@@ -1,6 +1,7 @@
 import {Server} from 'socket.io';
 
-const io = new Server(9000, {
+const PORT = process.env.PORT || 9000 
+const io = new Server(PORT, {
     cors: {
         origin: "http://localhost:3000"
     }
@@ -26,5 +27,10 @@ io.on('connection', (socket)=>{
     socket.on('sendMessage', data=>{
         const user = getUser(data.receiverId);
         io.to(user?.socketId).emit('getMessage', data);
+    })
+    socket.on('disconnect', () => {
+        console.log('user disconnected');
+        removeUser(socket.id);
+        io.emit('getUsers', users);
     })
 })
