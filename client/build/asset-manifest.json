@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/static/css/main.cacdffde.css",
+    "main.js": "/static/js/main.e3a1da7f.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/native-desktop-hero_png": "/static/media/native-desktop-hero_a22b846aefcd2de817624e95873b2064.73da2c5c5879eceffaff.png",
+    "index.html": "/index.html",
+    "main.cacdffde.css.map": "/static/css/main.cacdffde.css.map",
+    "main.e3a1da7f.js.map": "/static/js/main.e3a1da7f.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.cacdffde.css",
+    "static/js/main.e3a1da7f.js"
+  ]
+}
