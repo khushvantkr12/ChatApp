@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 9000;
 const io = new Server(PORT, {
     cors: {
         origin: ["http://localhost:3000","https://chatapp-seven-livid.vercel.app/"],
+        methods: ["GET", "POST"]
     },
 });
 
