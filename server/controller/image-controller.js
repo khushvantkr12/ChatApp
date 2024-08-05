@@ -1,7 +1,7 @@
 import grid from 'gridfs-stream';
 import mongoose, { mongo } from 'mongoose';
 
-const url = "http://localhost:8000";
+const url = "https://chatapp-panx.onrender.com";
 
 let gfs, gridFsBucket;
 const conn = mongoose.connection;
