@@ -6,7 +6,7 @@ import AccountProvider from "./context/AccountProvider";
 
 function App() {
   const clientId =
-    "383202512806-12ktdtttnbo86o7365mg0b97rco8gt4n.apps.googleusercontent.com";
+    "118525175095-95mar4m84lso361117ooofugjherou2u.apps.googleusercontent.com";
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <AccountProvider>
