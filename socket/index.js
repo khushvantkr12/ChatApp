@@ -3,10 +3,10 @@ import { Server } from 'socket.io';
 import dotenv from 'dotenv';
 dotenv.config();
 
-const PORT = process.env.PORT || 9000;
+const PORT = process.env.PORT||9000;
 const io = new Server(PORT, {
     cors: {
-        origin: ["http://localhost:3000","https://chatapp-seven-livid.vercel.app/"],
+        origin: ["http://localhost:3000","https://chatapp-seven-livid.vercel.app"],
         methods: ["GET", "POST"]
     },
 });
@@ -38,9 +38,4 @@ io.on('connection', (socket) => {
         io.to(user?.socketId).emit('getMessage', data);
     });
 
-    socket.on('disconnect', () => {
-        console.log('user disconnected');
-        removeUser(socket.id);
-        io.emit('getUsers', users);
-    });
 });
