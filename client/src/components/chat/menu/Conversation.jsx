@@ -3,8 +3,7 @@ import { Box, Typography, styled } from "@mui/material";
 
 import { AccountContext } from "../../../context/AccountProvider";
 import { setConversation, getConversation } from "../../../service/api";
-import {formatDate} from '../../../utils/common-utils';
-
+import { formatDate } from '../../../utils/common-utils';
 
 const Component = styled(Box)`
   display: flex;
@@ -37,43 +36,41 @@ const Text = styled(Typography)`
   color: rgba(0, 0, 0, 0.6);
 `;
 
-
 const Conversation = ({ user }) => {
   const { setPerson, account, newMessageFlag } = useContext(AccountContext);
- 
   const [message, setMessage] = useState({});
 
-  useEffect(()=>{
-    const getConversationDetails = async ()=>{
-      const data = await getConversation({senderId: account.sub, receiverId: user.sub});
-      setMessage({text: data?.message, timestamp: data?.updatedAt})
-    }
+  useEffect(() => {
+    const getConversationDetails = async () => {
+      const data = await getConversation({ senderId: account.sub, receiverId: user.sub });
+      setMessage({ text: data?.message, timestamp: data?.updatedAt });
+    };
     getConversationDetails();
-  }, [newMessageFlag])
+  }, [newMessageFlag]);
 
   const getUser = async () => {
     setPerson(user);
-    await setConversation({senderId: account.sub, receiverId: user.sub})
+    await setConversation({ senderId: account.sub, receiverId: user.sub });
   };
+
+  // Check if the message text contains 'localhost' (development) or media file extensions (production)
+  const isMedia = message?.text?.includes('localhost') || message?.text?.match(/\.(jpeg|jpg|gif|png|mp4)$/);
 
   return (
     <Component onClick={() => getUser()}>
-      {/* left part  */}
+      {/* Left part */}
       <Box>
         <Image src={user.picture} alt="dp" />
       </Box>
 
-      {/* right part  */}
-      <Box style={{width: '100%'}}>
+      {/* Right part */}
+      <Box style={{ width: '100%' }}>
         <Container>
           <Typography>{user.name}</Typography>
-          {
-            message?.text &&
-              <Timestamp>{formatDate(message?.timestamp)}</Timestamp>
-          }
+          {message?.text && <Timestamp>{formatDate(message?.timestamp)}</Timestamp>}
         </Container>
         <Box>
-          <Text>{message?.text?.includes('localhost') ? 'media' : message.text}</Text>
+          <Text>{isMedia ? 'media' : message.text}</Text>
         </Box>
       </Box>
     </Component>
@@ -81,3 +78,4 @@ const Conversation = ({ user }) => {
 };
 
 export default Conversation;
+
