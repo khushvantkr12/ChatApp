@@ -53,6 +53,8 @@ const Conversation = ({ user }) => {
     await setConversation({ senderId: account.sub, receiverId: user.sub });
   };
 
+  // Check if the message text contains 'localhost' (development) or media file extensions (production)
+  const isMedia = message?.text?.includes('localhost') || message?.text?.match(/\.(jpeg|jpg|gif|png|mp4)$/);
 
   return (
     <Component onClick={() => getUser()}>
@@ -68,7 +70,7 @@ const Conversation = ({ user }) => {
           {message?.text && <Timestamp>{formatDate(message?.timestamp)}</Timestamp>}
         </Container>
         <Box>
-           <Text>{message?.text?.includes('localhost') ? 'media' : message.text}</Text>
+          <Text>{isMedia ? 'media' : message.text}</Text>
         </Box>
       </Box>
     </Component>
@@ -76,4 +78,5 @@ const Conversation = ({ user }) => {
 };
 
 export default Conversation;
+
 
