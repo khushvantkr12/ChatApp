@@ -5,6 +5,7 @@ import { AccountContext } from "../../../context/AccountProvider";
 import { setConversation, getConversation } from "../../../service/api";
 import {formatDate} from '../../../utils/common-utils';
 
+
 const Component = styled(Box)`
   display: flex;
   height: 45px;
@@ -39,7 +40,7 @@ const Text = styled(Typography)`
 
 const Conversation = ({ user }) => {
   const { setPerson, account, newMessageFlag } = useContext(AccountContext);
-
+ 
   const [message, setMessage] = useState({});
 
   useEffect(()=>{

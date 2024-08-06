@@ -3,7 +3,7 @@ import { useContext, useEffect, useState, userContext } from "react";
 import { getUsers } from "../../../service/api";
 import { AccountContext } from "../../../context/AccountProvider";
 import { Box, Divider, styled } from "@mui/material";
-
+import AppLoader from '../../Loader/AppLoader'
 // components
 import Conversation from "./Conversation";
 
@@ -20,14 +20,16 @@ const StyledDivider = styled(Divider)`
 
 const Conversations = ({text}) => {
   const [users, setUsers] = useState([]);
-
+  const [loader, setLoader] = useState(false)
   const { account, socket, setActiveUsers} = useContext(AccountContext);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoader(true);
       let response = await getUsers();
       const filteredData = response.filter(user => user.name.toLowerCase().includes(text.toLowerCase()));
       setUsers(filteredData);
+      setLoader(false);
     };
     fetchData();
   }, [text]);
@@ -41,8 +43,9 @@ const Conversations = ({text}) => {
 
   return (
     <Component>
-      {
-        users.map((user) => (
+    {loader && <AppLoader />}
+      
+        {users.map((user) => (
             user.sub !== account.sub &&
             <>
                 <Conversation user={user} />

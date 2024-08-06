@@ -1,5 +1,6 @@
 import { GoogleOAuthProvider } from "@react-oauth/google";
-
+import Loader from './components/Loader/Loader'
+import { Suspense } from "react";
 // components
 import Messenger from "./components/Messenger";
 import AccountProvider from "./context/AccountProvider";
@@ -10,7 +11,9 @@ function App() {
   return (
     <GoogleOAuthProvider clientId={clientId}>
       <AccountProvider>
-        <Messenger />
+      <Suspense fallback={<Loader />}>
+      <Messenger />
+      </Suspense>
       </AccountProvider>
     </GoogleOAuthProvider>
   );
